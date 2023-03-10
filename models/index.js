@@ -1,3 +1,4 @@
 module.exports = {
-	posts: require("./PostSchema")
+	posts: require("./PostSchema"),
+	clients: require("./ClientSchema"),
 }

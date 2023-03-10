@@ -7,7 +7,7 @@ const mongoose = require('mongoose');
 require('dotenv').config()
 
 const indexRouter = require('./routes/index');
-const usersRouter = require('./routes/users');
+const clientsRouter = require('./routes/users');
 const postsRouter = require('./routes/post');
 
 const models = require('./models');
@@ -26,15 +26,17 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
-app.use('/users', usersRouter);
+app.use('/clients', clientsRouter);
 app.use('/posts', postsRouter);
 
 app.models = {
-	posts: models.posts
+	posts: models.posts,
+	clients: models.clients
 }
 
 app.services = {
-	posts: new (services.posts)(app.models)
+	posts: new (services.posts)(app.models),
+	clients: new (services.clients)(app.models),
 }
 
 

@@ -8,15 +8,18 @@ class PostService {
 	}
 
 	async getAll() {
-		return ["A"];
+		const posts = await this.models.posts
+		.find({})
+		.populate("userId")
+		return posts
 	}
 	async addPost(body) {
-
+		console.log(body)
 		const post = new this.models.posts({
 			...body,
 		});
-
-		return post.save()
+		await post.save().then(post =>  console.log(post))
+		return post
 
 	}
 }

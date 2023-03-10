@@ -1,9 +1,11 @@
 const express = require('express');
 const router = express.Router();
 
+const { ClientsController } = require('../controllers');
+const controller = new ClientsController()
+
 /* GET users listing. */
-router.get('/', function(req, res, next) {
-  res.send('respond with a resource');
-});
+router.get('/', controller.getAll);
+router.post('/', controller.addClient);
 
 module.exports = router;

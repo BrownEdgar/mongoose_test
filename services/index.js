@@ -1,3 +1,4 @@
 module.exports = {
-	posts : require("./PostService")
+	posts : require("./PostService"),
+	clients: require("./ClientService"),
 }
