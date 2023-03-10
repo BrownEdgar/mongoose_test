@@ -3,8 +3,8 @@ class PostService {
 		this.models = models;
 	}
 
-	async getAll(req, res) {
-		return [];
+	async getAll() {
+		return ["A"];
 	}
 }
 

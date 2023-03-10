@@ -8,6 +8,7 @@ require('dotenv').config()
 
 const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
+const postsRouter = require('./routes/post');
 
 const models = require('./models');
 const services = require('./services');
@@ -26,19 +27,24 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
+app.use('/posts', postsRouter);
 
 app.models = {
 	posts: models.posts
 }
 
-app.servicies = {
+app.services = {
 	posts: new (services.posts)(app.models)
 }
 
 
-mongoose.set("strictQuery", false);
 
-mongoose.connect(process.env.MONGO_DB_URL);
+mongoose.set("strictQuery", true);
+mongoose.connect(process.env.MONGO_DB_URL, 
+	{
+		useNewUrlParser: true,
+		useUnifiedTopology: true
+	});
 
 
 

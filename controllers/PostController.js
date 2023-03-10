@@ -4,13 +4,14 @@ class PostController {
 	}
 	async getAll(req, res) {
 		try {
-			const allPosts = this.models.servicies.getAll()
+			const allPosts = await req.app.services.posts.getAll()
 			res.json({
 				message: "You get all Posts",
 				allPosts
 			})
 		} catch (error) {
 			res.json({
+				message: "xz",
 				error,
 			})
 		}
