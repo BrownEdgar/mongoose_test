@@ -1,9 +1,7 @@
 const { Schema, model } = require('mongoose');
 
 const postSchema = new Schema({
-	_id: {
-		type: Number
-	},
+
 	userId: {
 		type: Number,
 		required: true,

@@ -1,7 +1,5 @@
 class PostController {
-	constructor(models) {
-		this.models = models;
-	}
+
 	async getAll(req, res) {
 		try {
 			const allPosts = await req.app.services.posts.getAll()
@@ -10,10 +8,19 @@ class PostController {
 				allPosts
 			})
 		} catch (error) {
+			res.json({error})
+		}
+	}
+	async addPost(req, res) {
+		try {
+			const newPost = await req.app.services.posts.addPost(req.body)
 			res.json({
-				message: "xz",
-				error,
+				message: "post added!",
+				status: "success",
+				post: newPost
 			})
+		} catch (error) {
+			res.json({ error,  status: "fail", })
 		}
 	}
 }
