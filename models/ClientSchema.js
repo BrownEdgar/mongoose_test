@@ -8,10 +8,9 @@ const clientSchema = mongoose.Schema({
 	email: {
 		type: String,
 		trim: true,
-		unique: [true, "Email alredy exist"],
+		unique: true, 
 		required: 'Email address is required',
 	}
 });
-
 
 module.exports = mongoose.model("Client", clientSchema);

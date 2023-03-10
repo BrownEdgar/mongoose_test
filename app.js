@@ -9,6 +9,7 @@ require('dotenv').config()
 const indexRouter = require('./routes/index');
 const clientsRouter = require('./routes/users');
 const postsRouter = require('./routes/post');
+const productRouter = require('./routes/product');
 
 const models = require('./models');
 const services = require('./services');
@@ -28,15 +29,18 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', indexRouter);
 app.use('/clients', clientsRouter);
 app.use('/posts', postsRouter);
+app.use('/products', productRouter);
 
 app.models = {
 	posts: models.posts,
-	clients: models.clients
+	clients: models.clients,
+	products: models.products,
 }
 
 app.services = {
 	posts: new (services.posts)(app.models),
 	clients: new (services.clients)(app.models),
+	products: new (services.products)(app.models),
 }
 
 

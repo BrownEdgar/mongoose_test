@@ -1,6 +1,4 @@
-const Post = require("../models/PostSchema")
 const mongoose = require("mongoose")
-
 
 class ClientService {
 	constructor(models) {
