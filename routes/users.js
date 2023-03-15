@@ -23,5 +23,6 @@ const upload = multer({ storage: storage });
 /* GET users listing. */
 router.get('/', controller.getAll);
 router.post('/', upload.single('avatar'), controller.addClient);
+router.delete('/:id', upload.single('avatar'), controller.deleteClientById);
 
 module.exports = router;

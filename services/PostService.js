@@ -14,7 +14,7 @@ class PostService {
     return posts
   }
   async addPost(req) {
-    console.log(req.files.postimage2)
+		console.log(req.files)
     const post = await new this.models.posts({
       ...req.body,
       postimage1: {
@@ -25,11 +25,9 @@ class PostService {
         data: fs.readFileSync("./uploads/posts/" + req.files.postimage2[0].filename),
         contentType: req.files.postimage2[0].mimetype,
       }
-
     });
     await post.save()
     return post
-
   }
 }
 

@@ -8,6 +8,16 @@ class UserController {
       res.json({ error })
     }
   }
+
+	async deleteClientById(req, res) {
+		const {id} = req.params
+		try {
+			const allClients = await req.app.services.clients.deleteClientById(id)
+			res.send("Clients deleted!")
+		} catch (error) {
+			res.json({ error })
+		}
+	}
   async addClient(req, res) {
     console.log("req.file:", req.file);
     try {

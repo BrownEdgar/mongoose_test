@@ -9,6 +9,10 @@ class ClientService {
     const users = await this.models.clients.find({})
     return users
   }
+	async deleteClientById(id) {
+		const users = await this.models.clients.deleteOne({ _id: id })
+    return users
+  }
   async addClient(req) {
 
     const client = await new this.models.clients({
